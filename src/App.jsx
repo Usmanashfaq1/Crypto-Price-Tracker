@@ -1,5 +1,6 @@
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -26,7 +27,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
       </Route>
 
-      <Route path="*" element={<Login />} />
+      <Route path="*" element={<Navigate to="/login" />} />
       {/* if nothing else match then using this wild card route moving to login again */}
     </Routes>
   );

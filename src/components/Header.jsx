@@ -11,7 +11,7 @@ const Header = () => {
     if (auth === "true") {
       console.log("loging out!");
       localStorage.clear();
-      navigate("/Login");
+      navigate("/login");
     }
   };
   return (
