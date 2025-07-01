@@ -12,7 +12,7 @@ const Login = () => {
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
       <header className="bg-pink-500 text-center">
         <button className="text-4xl md:text-base bg-amber-50 m-4 border-2 p-1">
-          <strong>Weaving Factory System</strong>
+          <strong>Crypto Price Tracker</strong>
         </button>
       </header>
 
@@ -28,7 +28,7 @@ const Login = () => {
 
       <footer className="flex justify-center items-center bg-gray-700">
         <button className="text-5xl md:text-base bg-amber-50 m-4 border-2 p-1">
-          <strong>Ibrahim Tex</strong>
+          <strong>Crypto Price Tracker</strong>
         </button>
       </footer>
     </div>
