@@ -27,8 +27,8 @@ export default function AuthForm({ isLogin }) {
     setSuccess("");
 
     const endpoint = isLogin
-      ? "http://localhost:3000/api/auth/login"
-      : "http://localhost:3000/api/auth/signup";
+      ? "https://rest-express-api-production.up.railway.app/api/auth/login"
+      : "https://rest-express-api-production.up.railway.app/api/auth/signup";
 
     if (!isLogin && formData.password !== formData.confirmPassword) {
       return setError("Passwords do not match.");

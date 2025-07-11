@@ -6,10 +6,13 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/auth/logout", {
-        method: "POST",
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://rest-express-api-production.up.railway.app/api/auth/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
 
       if (res.ok) {
         navigate("/login");

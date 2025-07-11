@@ -7,9 +7,12 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/users/profile", {
-          credentials: "include",
-        });
+        const res = await fetch(
+          "https://rest-express-api-production.up.railway.app/api/users/profile",
+          {
+            credentials: "include",
+          }
+        );
 
         if (res.ok) {
           setIsAuthenticated(true);

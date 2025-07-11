@@ -30,7 +30,7 @@ const CryptoCoins = () => {
     const fetchCoins = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/crypto/prices",
+          "https://rest-express-api-production.up.railway.app/api/crypto/prices",
           {
             credentials: "include",
           }
