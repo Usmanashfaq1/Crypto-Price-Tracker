@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AuthForm from "../components/authForm";
+import BrowserWarning from "../components/BrowserWarning";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,6 +20,7 @@ const Login = () => {
           <h2 className="text-3xl font-bold text-pink-600 text-center mb-6">
             {isLogin ? "Login" : "Sign Up"}
           </h2>
+          <BrowserWarning />
 
           <AuthForm isLogin={isLogin} />
 
@@ -31,6 +33,7 @@ const Login = () => {
               {isLogin ? "Sign Up" : "Login"}
             </button>
           </p>
+
         </div>
       </main>
 
