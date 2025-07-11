@@ -1,34 +1,43 @@
-import { useNavigate } from "react-router-dom";
-const Login = () => {
-  const navigate = useNavigate();
+import { useState } from "react";
+import AuthForm from "../components/authForm";
 
-  const handleLogin = () => {
-    // Fake login (in real apps, do API call)
-    localStorage.setItem("auth", "true");
-    navigate("/");
-  };
+const Login = () => {
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
-      <header className="bg-pink-500 text-center">
-        <button className="text-4xl md:text-base bg-amber-50 m-4 border-2 p-1">
-          <strong>Crypto Price Tracker</strong>
+    <div className="grid grid-rows-[auto_1fr_auto] min-h-screen bg-pink-100">
+      {/* Header */}
+      <header className="bg-pink-600 py-4 shadow-md text-center">
+        <button className="bg-amber-100 text-pink-800 font-bold px-6 py-2 rounded-lg border border-amber-300 hover:bg-amber-200 transition text-xl">
+          Crypto Price Tracker
         </button>
       </header>
 
-      <main className="flex flex-col justify-center items-center">
-        <h1 className="text-6xl md:text-base font-bold mb-4">Login Page</h1>
-        <button
-          onClick={handleLogin}
-          className=" text-5xl md:text-base  px-6 py-3 md:px-4 md:py-2 bg-pink-500 text-white  rounded"
-        >
-          Login
-        </button>
+      {/* Main Form Section */}
+      <main className="flex flex-col justify-center items-center px-4">
+        <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl mt-8 mb-12">
+          <h2 className="text-3xl font-bold text-pink-600 text-center mb-6">
+            {isLogin ? "Login" : "Sign Up"}
+          </h2>
+
+          <AuthForm isLogin={isLogin} />
+
+          <p className="text-sm mt-6 text-center text-gray-600">
+            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-pink-500 font-medium hover:underline"
+            >
+              {isLogin ? "Sign Up" : "Login"}
+            </button>
+          </p>
+        </div>
       </main>
 
-      <footer className="flex justify-center items-center bg-gray-700">
-        <button className="text-5xl md:text-base bg-amber-50 m-4 border-2 p-1">
-          <strong>Crypto Price Tracker</strong>
+      {/* Footer */}
+      <footer className="bg-pink-800 py-4 text-center">
+        <button className="bg-amber-100 text-pink-800 font-bold px-6 py-2 rounded-lg border border-amber-300 hover:bg-amber-200 transition text-base">
+          Crypto Price Tracker
         </button>
       </footer>
     </div>

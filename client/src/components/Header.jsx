@@ -1,40 +1,59 @@
 import { Link, useNavigate } from "react-router-dom";
-import Weather from "./Weather";
-import Dollar from "./Dollar";
 import Clock from "./Clock";
 
-// import '../styles/header.css'
 const Header = () => {
   const navigate = useNavigate();
-  const handleLogout = () => {
-    const auth = localStorage.getItem("auth");
-    if (auth === "true") {
-      console.log("loging out!");
-      localStorage.clear();
-      navigate("/login");
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (res.ok) {
+        navigate("/login");
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (err) {
+      console.error("Logout error:", err.message);
     }
   };
+
   return (
-    <header className="flex flex-col md:flex-row justify-between text-2xl md:text-base bg-pink-600 p-4">
-      <div className="hidden md:block">
-        <button className="bg-pink-200 m-4 border-2  p-1">
-          <strong>Crypto Coins</strong>
+    <header className="flex flex-col md:flex-row items-center justify-between bg-pink-600 text-white px-6 py-4 shadow-md">
+      {/* Brand + Clock */}
+      <div className="hidden md:flex items-center space-x-6">
+        <button className="bg-pink-200 text-pink-800 font-bold px-4 py-2 rounded shadow hover:bg-pink-300 transition">
+          Crypto Coins
         </button>
         <Clock />
       </div>
 
-      <nav>
-        <ul className="flex justify-end m-4 items-center list-none gap-8 pr-2.5   ">
-          <li className="bg-pink-950 text-white  border-2 p-2">
-            <Link to="/">Home</Link>
+      {/* Navigation */}
+      <nav className="w-full md:w-auto mt-4 md:mt-0">
+        <ul className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-4">
+          <li>
+            <Link
+              to="/"
+              className="block bg-pink-800 hover:bg-pink-900 transition px-4 py-2 rounded text-white font-medium"
+            >
+              Home
+            </Link>
           </li>
-          <li className="bg-pink-950 text-white  border-2 p-2">
-            <Link to="/about">About</Link>
+          <li>
+            <Link
+              to="/about"
+              className="block bg-pink-800 hover:bg-pink-900 transition px-4 py-2 rounded text-white font-medium"
+            >
+              About
+            </Link>
           </li>
           <li>
             <button
-              className="bg-pink-950 text-white  border-2 p-2"
               onClick={handleLogout}
+              className="bg-pink-800 hover:bg-pink-900 transition px-4 py-2 rounded text-white font-medium"
             >
               Logout
             </button>

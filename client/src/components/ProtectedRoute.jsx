@@ -1,8 +1,32 @@
-// src/components/ProtectedRoute.jsx
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("auth");
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // null = loading
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/users/profile", {
+          credentials: "include",
+        });
+
+        if (res.ok) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+      } catch (err) {
+        setIsAuthenticated(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  if (isAuthenticated === null) {
+    return <p>Loading...</p>; // or spinner
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
