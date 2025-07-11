@@ -10,7 +10,8 @@ const ProtectedRoute = ({ children }) => {
         const res = await fetch(
           "https://rest-express-api-production.up.railway.app/api/users/profile",
           {
-            credentials: "include",
+            method: "GET",
+            credentials: "include", // ✅ Required
           }
         );
 
