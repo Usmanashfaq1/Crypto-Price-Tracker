@@ -20,14 +20,14 @@ export default function ResetPassword() {
     }
 
     try {
-      const res = await fetch(
-        "https://rest-express-api-production.up.railway.app/api/auth/reset-password",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ token, password }),
-        }
-      );
+     const res = await fetch(
+  `https://rest-express-api-production.up.railway.app/api/auth/reset-password/${token}`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ password }), // no need to send token in body
+  }
+);
 
       const data = await res.json();
 
