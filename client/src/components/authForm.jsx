@@ -116,6 +116,18 @@ export default function AuthForm({ isLogin }) {
             className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
             placeholder="Enter your password"
           />
+          {isLogin && (
+  <div className="text-right mt-2">
+    <button
+      onClick={() => navigate("/forgot-password")}
+      type="button"
+      className="text-sm text-pink-500 hover:underline"
+    >
+      Forgot Password?
+    </button>
+  </div>
+)}
+
         </div>
 
         {/* Confirm Password (only on signup) */}

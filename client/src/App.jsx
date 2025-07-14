@@ -7,12 +7,18 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import MainLayout from "./layout/MainLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+
+
 import "./App.css";
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login />} />   
+     <Route path="/forgot-password" element={<ForgotPassword />} />
+     <Route path="/reset-password/:token" element={<ResetPassword />} />
 
       <Route
         path="/"
